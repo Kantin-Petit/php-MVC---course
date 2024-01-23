@@ -12,7 +12,7 @@ session_start();
 <body>
     ***Menu***<br>
     <div id="menu">
-        <a href="index.php?page=liste_produits&onglet=0">Tous les produits</a>
+        <a href="index.php?page=liste_produits&onglet=0&genre=&search=">Tous les produits</a>
         <a href="index.php?page=create_produit&mode=r">Créer un produit</a>
     </div>
 

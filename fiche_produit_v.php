@@ -17,3 +17,4 @@ include('fiche_produit_m.php');
 ?>
 
 <a href="index.php?page=update_produit&mode=r&idprod=<?php echo $_GET['idprod'] ?>">Update</a>
+<a href="index.php?page=delete_produit&mode=r&idprod=<?php echo $_GET['idprod'] ?>">Delete</a>

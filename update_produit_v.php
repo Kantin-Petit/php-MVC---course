@@ -1,14 +1,9 @@
 <?php
-if ($_GET['mode'] == 'c') {
-    echo "Succes de l'ajout";
-}
-?>
-<?php
 include('update_produit_m.php');
     foreach($res as $row)
     {
 ?>
-    <form action="index.php?page=fiche_produit&mode=u&idprod=<?php echo $_GET['idprod']?>" method="post">
+    <form action="index.php?page=update_produit&mode=u&idprod=<?php $idprod ?>" method="POST">
         <div>
             <label for="titre">titre</label>
             <input type="text" name="titre" id="titre" value="<?php echo $row['Titre'] ?>" required/>
