@@ -7,13 +7,13 @@
 
 <?php
 include('fiche_produit_m.php');
-    foreach($res as $row){
+    $row = $res -> fetch();
         echo "<div class='produit'>";
-            echo "<div class='Titre>".$row['Titre']."</div>";
-            echo "<div class='Description'>".$row['Description']."</div>";
-            echo "<div class='Prix'>".$row['Prix']."</div>";
+            echo "<div class='Titre>".$row['titre_art']."</div>";
+            echo "<div class='Description'>".$row['description_art']."</div>";
+            echo "<div class='Prix'>".$row['prix_art']."</div>";
         echo "</div>";
-    }
+    
 ?>
 
 <a href="index.php?page=update_produit&mode=r&idprod=<?php echo $_GET['idprod'] ?>">Update</a>

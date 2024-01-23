@@ -25,13 +25,13 @@
 			//On boucle sur l'objet pour crée autant de resultat que contenue BD
 		?>
 		<div class="fiche">
-			<h2><?php echo $produit['Titre'];?></h2>
-			<img class="product-pic" src="https://via.placeholder.com/720x1280" alt="<?php echo $produit['Titre'];?>">
-			<!--<img src="IMG/<?php echo $produit['Image'];?>"  alt="<?php echo $produit['Titre'];?>">-->
-			<p>DESCRIPTION : <?php echo $produit['Description'];?></p>
-			<p>PRIX : <?php echo $produit['Prix'];?> €</p>
+			<h2><?php echo $produit['titre_art'];?></h2>
+			<img class="product-pic" src="https://via.placeholder.com/720x1280" alt="<?php echo $produit['titre_art'];?>">
+			<!--<img src="IMG/<?php echo $produit['photo_art'];?>"  alt="<?php echo $produit['titre_art'];?>">-->
+			<p>DESCRIPTION : <?php echo $produit['description_art'];?></p>
+			<p>PRIX : <?php echo $produit['prix_art'];?> €</p>
 			<button>Ajouter au panier</button>
-			<a href="index.php?page=fiche_produit&idprod=<?php echo $produit['Id'];?>">Voir la fiche</a>
+			<a href="index.php?page=fiche_produit&idprod=<?php echo $produit['id_art'];?>">Voir la fiche</a>
 		</div>
 		<?php
 		}
