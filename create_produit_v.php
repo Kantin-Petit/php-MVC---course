@@ -9,16 +9,8 @@ if ($_GET['mode'] == 'c') {
         <input type="text" name="titre" id="titre" required/>
     </div>
     <div>
-        <label for="date">date</label>
-        <input type="date" name="date" id="date" required/>
-    </div>
-    <div>
-        <label for="genre">genre</label>
-        <input type="text" name="genre" id="genre" required/>
-    </div>
-    <div>
-        <label for="support">support</label>
-        <input type="text" name="support" id="support" required/>
+        <label for="description">description</label>
+        <input type="text" name="description" id="description" required/>
     </div>
     <div>
         <label for="prix">prix</label>
@@ -33,12 +25,8 @@ if ($_GET['mode'] == 'c') {
         <input type="text" name="image" id="image" required/>
     </div>
     <div>
-        <label for="description">description</label>
-        <input type="text" name="description" id="description" required/>
-    </div>
-    <div>
-        <label for="artiste">artiste</label>
-        <input type="text" name="artiste" id="artiste" required/>
+        <label for="categorie">categorie</label>
+        <input type="text" name="categorie" id="categorie" required/>
     </div>
     <button>Valider</button>
 </form>

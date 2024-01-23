@@ -3,13 +3,13 @@
 require_once('bd.php');
 
 // On récupère la liste des Genres
-$sqlQuery = "SELECT DISTINCT Genre FROM produit ORDER BY Genre ASC";
+$sqlQuery = "SELECT DISTINCT fk_categorie FROM Article ORDER BY Genre ASC";
 $sth = $mysqlClient->prepare($sqlQuery);
 $sth->execute();
 $genres = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 //on recupere le nombre de produit total
-$sqlQuery = "SELECT COUNT(*) FROM produit WHERE 1 ";
+$sqlQuery = "SELECT COUNT(*) FROM Article WHERE 1 ";
 $smtp = $mysqlClient->prepare($sqlQuery);
 $smtp->execute();
 $nbProduits = $smtp->fetchColumn();
@@ -17,11 +17,11 @@ $nbProduits = $smtp->fetchColumn();
 // On récupère tout le contenu de la table produit
 $search = $_GET['search'];
 $genre = $_GET['genre'];
-$sqlQuery = "SELECT * FROM produit WHERE 1 ";
+$sqlQuery = "SELECT * FROM Article WHERE 1 ";
 
 // On ajoute les conditions de recherche
 if(!empty($search)){
-    $sqlQuery .= "AND (Titre LIKE :search OR Artiste LIKE :search) ";
+    $sqlQuery .= "AND (Titre LIKE :search) ";
 }
 
 if(!empty($genre)){

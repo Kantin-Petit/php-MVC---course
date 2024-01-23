@@ -3,28 +3,22 @@ include('bd.php');
 
 if ($_GET['mode'] == 'c') {
     $titre = $_POST['titre'];
-    $date = $_POST['date'];
-    $genre = $_POST['genre'];
-    $support = $_POST['support'];
+    $description = $_POST['description'];
     $prix = $_POST['prix'];
     $stock = $_POST['stock'];
     $image = $_POST['image'];
-    $description = $_POST['description'];
-    $artiste = $_POST['artiste'];
+    $categorie = $_POST['categorie'];
 
     try {
         // Requête d'insertion avec préparation et exécution
-        $requete = $mysqlClient->prepare("INSERT INTO `produit` (`Titre`, `Date`, `Genre`, `Support`, `Prix`, `Stock`, `Image`, `Description`, `Artiste`) VALUES (:titre, :date, :genre, :support, :prix, :stock, :image, :description, :artiste)");
+        $requete = $mysqlClient->prepare("INSERT INTO Article (titre_art, description_art, prix_art, stock_art, photo_art, fk_categorie) VALUES (:titre, :description :prix, :stock, :image, :categorie)");
         
         $requete->bindParam(':titre', $titre);
-        $requete->bindParam(':date', $date);
-        $requete->bindParam(':genre', $genre);
-        $requete->bindParam(':support', $support);
+        $requete->bindParam(':description', $description);
         $requete->bindParam(':prix', $prix);
         $requete->bindParam(':stock', $stock);
         $requete->bindParam(':image', $image);
-        $requete->bindParam(':description', $description);
-        $requete->bindParam(':artiste', $artiste);
+        $requete->bindParam(':categorie', $categorie);
         
         // Exécution de la requête
         $requete->execute();
