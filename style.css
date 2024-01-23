@@ -1,10 +1,69 @@
-#catalogue{
-width: 100%;
-display: flex;
-flex-wrap: wrap;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
-.fiche{
-	text-align: center;
-	width: 33%;
+body {
+  color: #000000;
 }
+
+html,
+body {
+  min-height: 100vh;
+}
+
+#catalogue {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding: 1rem;
+  margin: 3rem auto;
+  border-radius: 0.2rem;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.container ul {
+  width: 100%;
+}
+
+ul, li {
+  list-style: none;
+  display: inline;
+  padding-left: 0px;
+}
+
+li:hover a {
+  color: #fdfdfd;
+  background-color: #1d1f20;
+  border: solid 1px #1d1f20;
+}
+li.active a {
+  color: #fdfdfd;
+  background-color: #1d1f20;
+  border: solid 1px #1d1f20;
+}
+li a {
+  border: solid 1px #d7d7d7;
+  border-radius: 0.2rem;
+  color: #3c3c3c;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  padding: 0.5rem 0.9rem;
+}
+
+.productsListe {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.productsListe .fiche .product-pic {
+  width: 200px;
+  height: 300px;
+}/*# sourceMappingURL=style.css.map */

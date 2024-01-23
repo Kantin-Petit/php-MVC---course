@@ -41,9 +41,10 @@ if ($_GET['mode'] == 'u') {
 
     // Exécution de la requête
     $requete->execute();
-
+    echo "L'enregistrement a été mis à jour";
     } catch (PDOException $e) {
-        echo "Erreur lors de l'ajout de l'enregistrement : " . $e->getMessage();
+        echo "Erreur lors de la mise à jour de l'enregistrement : " . $e->getMessage();
+
     }
 }
 
