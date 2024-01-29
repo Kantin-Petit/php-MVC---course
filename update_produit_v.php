@@ -9,16 +9,16 @@ include('update_produit_m.php');
             <input type="text" name="titre" id="titre" value="<?php echo $row['Titre'] ?>" required/>
         </div>
         <div>
-            <label for="date">date</label>
-            <input type="date" name="date" id="date" value="<?php echo $row['Date'] ?>" required/>
-        </div>
-        <div>
-            <label for="genre">genre</label>
-            <input type="text" name="genre" id="genre" value="<?php echo $row['Genre'] ?>" required/>
-        </div>
-        <div>
-            <label for="support">support</label>
-            <input type="text" name="support" id="support" value="<?php echo $row['Support'] ?>" required/>
+            <label for="categorie">Categorie</label>
+            <select name="categorie" id="categorie" required>
+                <option value="">--Choisir catégorie--</option>
+                <?php
+                    //include('create_produit_m.php');
+                    foreach ($cat as $row) {
+                        echo "<option value='".$row['id_cat']."'>".$row['libelle_cat']."</option>";
+                    }
+                ?>
+            </select>
         </div>
         <div>
             <label for="prix">prix</label>
@@ -35,10 +35,6 @@ include('update_produit_m.php');
         <div>
             <label for="description">description</label>
             <input type="text" name="description" id="description" value="<?php echo $row['Description'] ?>" required/>
-        </div>
-        <div>
-            <label for="artiste">artiste</label>
-            <input type="text" name="artiste" id="artiste" value="<?php echo $row['Artiste'] ?>" required/>
         </div>
         <button>Valider</button>
     </form>

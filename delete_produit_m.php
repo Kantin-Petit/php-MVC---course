@@ -9,7 +9,7 @@ if ($_GET['mode'] == 'd') {
     try {
         // Requête d'insertion avec préparation et exécution
     $requete = $mysqlClient->prepare(
-        "DELETE FROM produit WHERE `Id` = :idprod; "
+        "DELETE FROM Article WHERE `id_art` = :idprod; "
     );
 
         $requete->bindParam(':idprod', $idprod);

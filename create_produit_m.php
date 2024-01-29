@@ -1,6 +1,10 @@
 <?php 
 include('bd.php');
 
+$querie = "SELECT * FROM `Categorie`";
+        $res = $mysqlClient->prepare($querie);
+        $res -> execute();
+
 if ($_GET['mode'] == 'c') {
     $titre = $_POST['titre'];
     $description = $_POST['description'];
@@ -11,7 +15,8 @@ if ($_GET['mode'] == 'c') {
 
     try {
         // Requête d'insertion avec préparation et exécution
-        $requete = $mysqlClient->prepare("INSERT INTO Article (titre_art, description_art, prix_art, stock_art, photo_art, fk_categorie) VALUES (:titre, :description :prix, :stock, :image, :categorie)");
+        $test = "INSERT INTO Article (titre_art, description_art, prix_art, stock_art, photo_art, fk_categorie) VALUES (:titre, :description, :prix, :stock, :image, :categorie)";
+        $requete = $mysqlClient->prepare($test);
         
         $requete->bindParam(':titre', $titre);
         $requete->bindParam(':description', $description);

@@ -26,7 +26,15 @@ if ($_GET['mode'] == 'c') {
     </div>
     <div>
         <label for="categorie">categorie</label>
-        <input type="text" name="categorie" id="categorie" required/>
+        <select name="categorie" id="categorie" required>
+            <option value="">--Choisir catégorie--</option>
+            <?php
+                //include('create_produit_m.php');
+                foreach ($res as $row) {
+                    echo "<option value='".$row['id_cat']."'>".$row['libelle_cat']."</option>";
+                }
+            ?>
+        </select>
     </div>
     <button>Valider</button>
 </form>

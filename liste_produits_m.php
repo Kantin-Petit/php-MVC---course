@@ -3,7 +3,7 @@
 require_once('bd.php');
 
 // On récupère la liste des Genres
-$sqlQuery = "SELECT DISTINCT fk_categorie FROM Article ORDER BY Genre ASC";
+$sqlQuery = "SELECT DISTINCT libelle_cat FROM Categorie ORDER BY libelle_cat ASC";
 $sth = $mysqlClient->prepare($sqlQuery);
 $sth->execute();
 $genres = $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -18,13 +18,13 @@ $sqlQuery3 = "SELECT * FROM Article WHERE 1 ";
 
 // On ajoute les conditions de recherche
 if(!empty($search)){
-    $sqlQuery3 .= "AND (Titre LIKE :search OR Artiste LIKE :search) ";
-    $sqlQuery2 .= "AND (Titre LIKE :search OR Artiste LIKE :search) ";
+    $sqlQuery3 .= "AND (titre_art LIKE :search) ";
+    $sqlQuery2 .= "AND (titre_art LIKE :search) ";
 }
 
 if(!empty($genre)){
-    $sqlQuery3 .= "AND (Genre = :genre) ";
-    $sqlQuery2 .= "AND (Genre = :genre) ";
+    $sqlQuery3 .= "AND (Article.fk_categorie = Categorie.id_cat AND Categorie.libelle_cat = :genre) ";
+    $sqlQuery2 .= "AND (Article.fk_categorie = Categorie.id_cat AND Categorie.libelle_cat = :genre) ";
 }
 
 $sqlQuery3 .= " LIMIT :offset, 20";
