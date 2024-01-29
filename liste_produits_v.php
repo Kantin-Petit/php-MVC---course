@@ -10,7 +10,7 @@
 				<option value="">Tous les genres</option>
 				<?php
 				foreach ($genres as $genre) {
-					echo '<option value="' . $genre['Genre'] . '">' . $genre['Genre'] . '</option>';
+					echo '<option value="' . $genre['libelle_cat'] . '">' . $genre['libelle_cat'] . '</option>';
 				}
 				?>
 			</select>
