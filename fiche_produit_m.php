@@ -1,16 +1,16 @@
 <?php 
 include('bd.php');
-$idprod = $_GET['idprod'];
+$id_art = $_GET['id_art'];
 
 try{
-    $idprod = isset($_GET['idprod']) ? $_GET['idprod'] : null;
+    $id_art = isset($_GET['id_art']) ? $_GET['id_art'] : null;
 
-    if ($idprod == null || $idprod == "") {
+    if ($id_art == null || $id_art == "") {
         header("Location: index.php?page=error&message=Erreur lors de la récupération du produit");
     }else{
-        $querie = "SELECT * FROM `Article` WHERE id_art = :idprod;";
+        $querie = "SELECT * FROM `Article` WHERE id_art = :id_art;";
         $res = $mysqlClient->prepare($querie);
-        $res->bindParam(':idprod', $idprod);
+        $res->bindParam(':id_art', $id_art);
         $res -> execute();
     }
 }catch(PDOException $e){

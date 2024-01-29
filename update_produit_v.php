@@ -1,47 +1,36 @@
 <?php
 include('update_produit_m.php');
-    foreach($res as $row)
-    {
 ?>
-    <form action="index.php?page=update_produit&mode=u&idprod=<?php $idprod ?>" method="POST">
-        <div>
-            <label for="titre">titre</label>
-            <input type="text" name="titre" id="titre" value="<?php echo $row['Titre'] ?>" required/>
-        </div>
-        <div>
-            <label for="date">date</label>
-            <input type="date" name="date" id="date" value="<?php echo $row['Date'] ?>" required/>
-        </div>
-        <div>
-            <label for="genre">genre</label>
-            <input type="text" name="genre" id="genre" value="<?php echo $row['Genre'] ?>" required/>
-        </div>
-        <div>
-            <label for="support">support</label>
-            <input type="text" name="support" id="support" value="<?php echo $row['Support'] ?>" required/>
-        </div>
-        <div>
-            <label for="prix">prix</label>
-            <input type="text" name="prix" id="prix" value="<?php echo $row['Prix'] ?>" required/>
-        </div>
-        <div>
-            <label for="stock">stock</label>
-            <input type="text" name="stock" id="stock" value="<?php echo $row['Stock'] ?>" required/>
-        </div>
-        <div>
-            <label for="image">image</label>
-            <input type="text" name="image" id="image" value="<?php echo $row['Image'] ?>" required/>
-        </div>
-        <div>
-            <label for="description">description</label>
-            <input type="text" name="description" id="description" value="<?php echo $row['Description'] ?>" required/>
-        </div>
-        <div>
-            <label for="artiste">artiste</label>
-            <input type="text" name="artiste" id="artiste" value="<?php echo $row['Artiste'] ?>" required/>
-        </div>
-        <button>Valider</button>
-    </form>
-<?php
-    }
-?>
+<form action="index.php?page=update_produit&mode=u&id_art=<?php echo $_GET['id_art'] ?>" method="POST">
+    <div>
+        <label for="titre">titre</label>
+        <input type="text" name="titre_art" id="titre_art" value="<?php echo $res['titre_art'] ?>" required/>
+    </div>
+    <div>
+        <label for="categorie">categorie</label>
+        <select name="categorie" id="listeCategorie">
+            <?php
+            foreach ($categories as $categorie) {
+                echo '<option value="' . $categorie['id_cat'] . '">' . $categorie['libelle_cat'] . '</option>';
+            }
+            ?>
+        </select>
+    </div>
+    <div>
+        <label for="prix_art">prix</label>
+        <input type="text" name="prix_art" id="prix_art" value="<?php echo $res['prix_art'] ?>" required/>
+    </div>
+    <div>
+        <label for="stock_art">stock</label>
+        <input type="text" name="stock_art" id="stock_art" value="<?php echo $res['stock_art'] ?>" required/>
+    </div>
+    <div>
+        <label for="photo_art">image</label>
+        <input type="text" name="photo_art" id="photo_art" value="<?php echo $res['photo_art'] ?>" required/>
+    </div>
+    <div>
+        <label for="description_art">description</label>
+        <input type="text" name="description_art" id="description_art" value="<?php echo $res['description_art'] ?>" required/>
+    </div>
+    <button>Valider</button>
+</form>

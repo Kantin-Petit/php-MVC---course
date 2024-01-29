@@ -6,11 +6,11 @@
 			<input type="text" name="search" id="search">
 			<input type="hidden" name="page" value="liste_produits">
 			<input type="hidden" name="onglet" value="0">
-			<select name="genre" id="listeGenre">
+			<select name="categorie" id="listeCategorie">
 				<option value="">Tous les genres</option>
 				<?php
-				foreach ($genres as $genre) {
-					echo '<option value="' . $genre['Genre'] . '">' . $genre['Genre'] . '</option>';
+				foreach ($categories as $categorie) {
+					echo '<option value="' . $categorie['id_cat'] . '">' . $categorie['libelle_cat'] . '</option>';
 				}
 				?>
 			</select>
@@ -31,7 +31,7 @@
 			<p>DESCRIPTION : <?php echo $produit['description_art'];?></p>
 			<p>PRIX : <?php echo $produit['prix_art'];?> €</p>
 			<button>Ajouter au panier</button>
-			<a href="index.php?page=fiche_produit&idprod=<?php echo $produit['id_art'];?>">Voir la fiche</a>
+			<a href="index.php?page=fiche_produit&id_art=<?php echo $produit['id_art'];?>">Voir la fiche</a>
 		</div>
 		<?php
 		}

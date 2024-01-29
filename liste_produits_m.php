@@ -2,29 +2,29 @@
 
 require_once('bd.php');
 
-// On récupère la liste des Genres
-$sqlQuery = "SELECT DISTINCT fk_categorie FROM Article ORDER BY Genre ASC";
+// On récupère la liste des Categories
+$sqlQuery = "SELECT DISTINCT * FROM Categorie ORDER BY libelle_cat ASC";
 $sth = $mysqlClient->prepare($sqlQuery);
 $sth->execute();
-$genres = $sth->fetchAll(PDO::FETCH_ASSOC);
+$categories = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 //on recupere le nombre de produit total
 $sqlQuery2 = "SELECT COUNT(*) FROM Article WHERE 1 ";
 
 // On récupère tout le contenu de la table produit
 $search = $_GET['search'];
-$genre = $_GET['genre'];
+$categorie = $_GET['categorie'];
 $sqlQuery3 = "SELECT * FROM Article WHERE 1 ";
 
 // On ajoute les conditions de recherche
 if(!empty($search)){
-    $sqlQuery3 .= "AND (Titre LIKE :search OR Artiste LIKE :search) ";
-    $sqlQuery2 .= "AND (Titre LIKE :search OR Artiste LIKE :search) ";
+    $sqlQuery3 .= "AND (titre_art LIKE :search) ";
+    $sqlQuery2 .= "AND (titre_art LIKE :search) ";
 }
 
-if(!empty($genre)){
-    $sqlQuery3 .= "AND (Genre = :genre) ";
-    $sqlQuery2 .= "AND (Genre = :genre) ";
+if(!empty($categorie)){
+    $sqlQuery3 .= "AND (fk_categorie = :categorie) ";
+    $sqlQuery2 .= "AND (fk_categorie = :categorie) ";
 }
 
 $sqlQuery3 .= " LIMIT :offset, 20";
@@ -39,9 +39,9 @@ if(!empty($search)){
     $smtp2->bindValue(':search','%'. $search .'%', PDO::PARAM_STR);
 }
 
-if(!empty($genre)){
-    $smtp1->bindValue(':genre',$genre, PDO::PARAM_STR);
-    $smtp2->bindValue(':genre',$genre, PDO::PARAM_STR);
+if(!empty($categorie)){
+    $smtp1->bindValue(':categorie',$categorie, PDO::PARAM_STR);
+    $smtp2->bindValue(':categorie',$categorie, PDO::PARAM_STR);
 }
 
 $smtp1->bindValue(':offset', $_GET['onglet'] * 20, PDO::PARAM_INT);
