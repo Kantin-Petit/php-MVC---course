@@ -3,16 +3,16 @@ include('bd.php');
 
 
 if ($_GET['mode'] == 'd') {
-    $idprod = $_GET['idprod'];
+    $idprod = $_GET['id_art'];
 
 
     try {
         // Requête d'insertion avec préparation et exécution
     $requete = $mysqlClient->prepare(
-        "DELETE FROM produit WHERE `Id` = :idprod; "
+        "DELETE FROM Article WHERE `id_art` = :id_art; "
     );
 
-        $requete->bindParam(':idprod', $idprod);
+        $requete->bindParam(':id_art', $id_art);
 
         $requete->execute();
         

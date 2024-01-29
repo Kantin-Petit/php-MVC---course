@@ -2,58 +2,58 @@
 include('bd.php');
 
 try{
-    $idprod = isset($_GET['idprod']) ? $_GET['idprod'] : null;
+    // On récupère la liste des Categories
+    $sqlQuery = "SELECT DISTINCT * FROM Categorie ORDER BY libelle_cat ASC";
+    $sth = $mysqlClient->prepare($sqlQuery);
+    $sth->execute();
+    $categories = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($idprod == null || $idprod == "") {
+    $id_art = isset($_GET['id_art']) ? $_GET['id_art'] : null;
+
+    if ($id_art == null || $id_art == "") {
         header("Location: index.php?page=error&message=Erreur lors de la récupération de l'enregistrement");
     }else{
-        $querie = "SELECT * FROM `produit` WHERE id = :idprod;";
+        $querie = "SELECT Article.*, libelle_cat FROM Article 
+                    left join Categorie on Article.fk_categorie = Categorie.id_cat 
+                    WHERE id_art = :id_art;";
         $res = $mysqlClient->prepare($querie);
-        $res->bindParam(':idprod', $idprod);
+        $res->bindParam(':id_art', $id_art);
         $res -> execute();
+        $res = $res->fetch(PDO::FETCH_ASSOC);
 
         if ($_GET['mode'] == 'u') {
-            $titre = $_POST['titre'];
-            $date = $_POST['date'];
-            $genre = $_POST['genre'];
-            $support = $_POST['support'];
-            $prix = $_POST['prix'];
-            $stock = $_POST['stock'];
-            $image = $_POST['image'];
-            $description = $_POST['description'];
-            $artiste = $_POST['artiste'];
+            $titre_art = $_POST['titre_art'];
+            $categorie = $_POST['categorie'];
+            $prix_art = $_POST['prix_art'];
+            $stock_art = $_POST['stock_art'];
+            $photo_art = $_POST['photo_art'];
+            $description_art = $_POST['description_art'];
         
             try {
                 // Requête d'insertion avec préparation et exécution
-                $request = "UPDATE produit SET 
-                                                `Titre`=:titre, 
-                                                `Date`=:dateUpdate, 
-                                                `Genre`=:genre, 
-                                                `Support`=:support, 
-                                                `Prix`=:prix, 
-                                                `Stock`=:stock, 
-                                                `Image`=:imageUpdate, 
-                                                `Description`=:descriptionUpdate, 
-                                                `Artiste`=:artiste 
-                                            WHERE `Id` = :idprod";
+                $request = "UPDATE Article SET 
+                                                `titre_art`=:titre_art,
+                                                `fk_categorie`=:categorie,
+                                                `prix_art`=:prix_art, 
+                                                `stock_art`=:stock_art, 
+                                                `photo_art`=:photo_art, 
+                                                `description_art`=:description_art 
+                                            WHERE `id_art` = :id_art";
         
                 $requete = $mysqlClient->prepare($request);
         
-                $requete->bindParam(':titre', $titre);
-                $requete->bindParam(':dateUpdate', $date);
-                $requete->bindParam(':genre', $genre);
-                $requete->bindParam(':support', $support);
-                $requete->bindParam(':prix', $prix);
-                $requete->bindParam(':stock', $stock);
-                $requete->bindParam(':imageUpdate', $image);
-                $requete->bindParam(':descriptionUpdate', $description);
-                $requete->bindParam(':artiste', $artiste);
-                $requete->bindParam(':idprod', $idprod);
+                $requete->bindParam(':titre_art', $titre_art);
+                $requete->bindParam(':categorie', $categorie);
+                $requete->bindParam(':prix_art', $prix_art);
+                $requete->bindParam(':stock_art', $stock_art);
+                $requete->bindParam(':photo_art', $photo_art);
+                $requete->bindParam(':description_art', $description_art);
+                $requete->bindParam(':id_art', $id_art);
         
             // Exécution de la requête
                 $requete->execute();
         
-                header("Location: index.php?page=fiche_produit&idprod=$idprod");
+                header("Location: index.php?page=fiche_produit&id_art=1");
             
             } catch (PDOException $e) {
                 echo "Erreur lors de la mise à jour de l'enregistrement : " . $e->getMessage();
