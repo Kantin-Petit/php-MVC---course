@@ -43,22 +43,22 @@
 			<?php
 				if($_GET['onglet']>0)
 				{
-					echo "<li><a href='index.php?page=liste_produits&onglet=".($_GET['onglet']-1)."&search=".$_GET['search']."&genre=".$_GET['genre']."'>PREVIOUS</a></li>";
+					echo "<li><a href='index.php?page=liste_produits&onglet=".($_GET['onglet']-1)."&search=".$_GET['search']."&categorie=".$_GET['categorie']."'>PREVIOUS</a></li>";
 				}
 				for($count=0;$count<ceil($nbProduits/20);$count++)
 				{
 					if ($count==$_GET['onglet'])
 					{
-						echo '<li class="active"><a href="index.php?page=liste_produits&onglet='.$count.'&search='.$_GET["search"].'&genre='.$_GET["genre"].'">'.($count+1).'</a></li>';
+						echo '<li class="active"><a href="index.php?page=liste_produits&onglet='.$count.'&search='.$_GET["search"].'&categorie='.$_GET["categorie"].'">'.($count+1).'</a></li>';
 					}
 					else
 					{
-						echo '<li><a href="index.php?page=liste_produits&onglet='.$count.'&search='.$_GET["search"].'&genre='.$_GET["genre"].'">'.($count+1).'</a></li>';
+						echo '<li><a href="index.php?page=liste_produits&onglet='.$count.'&search='.$_GET["search"].'&categorie='.$_GET["categorie"].'">'.($count+1).'</a></li>';
 					}
 				}
 				if(count($produits)>=20)
 				{
-					echo "<li><a href='index.php?page=liste_produits&onglet=".($_GET['onglet']+1)."&search=".$_GET['search']."&genre=".$_GET['genre']."'>NEXT</a></li>";
+					echo "<li><a href='index.php?page=liste_produits&onglet=".($_GET['onglet']+1)."&search=".$_GET['search']."&categorie=".$_GET['categorie']."'>NEXT</a></li>";
 				}
 			?>
 		</ul>
