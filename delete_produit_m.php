@@ -3,7 +3,7 @@ include('bd.php');
 
 
 if ($_GET['mode'] == 'd') {
-    $idprod = $_GET['id_art'];
+    $id_art = $_GET['id_art'];
 
 
     try {
@@ -16,7 +16,7 @@ if ($_GET['mode'] == 'd') {
 
         $requete->execute();
         
-        header('Location: index.php?page=liste_produits&onglet=0&genre=&search=');
+        header('Location: index.php?page=liste_produits&onglet=0&categorie=&search=');
     }
     catch (PDOException $e) {
         echo "Erreur lors de la supression de l'enregistrement : " . $e->getMessage();

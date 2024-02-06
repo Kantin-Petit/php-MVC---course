@@ -6,8 +6,6 @@
 </form>
 
 <?php
-include('fiche_produit_m.php');
-    $row = $res -> fetch();
     echo "<div class='produit'>";
     echo "<div class='Titre>".$row['titre_art']."</div>";
     echo "<div class='Description'>".$row['description_art']."</div>";
@@ -16,5 +14,3 @@ include('fiche_produit_m.php');
     
 ?>
 
-<a href="index.php?page=update_produit&mode=r&id_art=<?php echo $_GET['id_art'] ?>">Update</a>
-<a href="index.php?page=delete_produit&mode=r&id_art=<?php echo $_GET['id_art'] ?>">Delete</a>
