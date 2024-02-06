@@ -2,8 +2,8 @@
     session_start();
     if($_SESSION['user'] == 'admin')
     {
-        include('create_produit_m.php');
-        include('create_produit_v.php');
+        include('admin_m.php');
+        include('admin_v.php');
     }
     else
     {

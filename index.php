@@ -1,5 +1,5 @@
-<?php
-session_start();
+<?php 
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,23 @@ session_start();
     ***Menu***<br>
     <div id="menu">
         <a href="index.php?page=liste_produits&onglet=0&categorie=&search=">Tous les produits</a>
-        <a href="index.php?page=create_produit&mode=r">Créer un produit</a>
+
+        <?php
+            if(isset($_SESSION['user']))
+            {
+        ?>
+                <a href="index.php?page=deconnexion">Déconnexion</a>
+                <a href="index.php?page=admin&onglet=0&categorie=&search=">admin page</a>
+        <?php
+            }
+            else
+            {
+        ?>
+                <a href="index.php?page=connexion">Connexion</a>
+        <?php
+            }
+        ?>
+        
     </div>
 
     <br>

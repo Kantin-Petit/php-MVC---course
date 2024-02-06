@@ -12,6 +12,7 @@ try{
         $res = $mysqlClient->prepare($querie);
         $res->bindParam(':id_art', $id_art);
         $res -> execute();
+        $row = $res -> fetch();
     }
 }catch(PDOException $e){
     echo "Erreur lors de la récupération de l'enregistrement : " . $e->getMessage();
