@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    // session_start();
     if($_SESSION['user'] == 'admin')
     {
         include('update_produit_m.php');

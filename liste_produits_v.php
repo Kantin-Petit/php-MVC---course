@@ -14,6 +14,12 @@
 				}
 				?>
 			</select>
+			<select name="tri" id="tri">
+				<option value="prix_art-ASC">Prix croissant</option>
+				<option value="prix_art-DESC">Prix decroissant</option>
+				<option value="titre_art-ASC">Titre alphabetique</option>
+				<option value="titre_art-DESC">Titre alphabetique inverse</option>
+			</select>
 			<button type="submit">Rechercher</button>
 		</form>
 	</div>

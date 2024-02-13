@@ -14,6 +14,7 @@ $sqlQuery2 = "SELECT COUNT(*) FROM Article WHERE 1 ";
 // On récupère tout le contenu de la table produit
 $search = $_GET['search'];
 $categorie = $_GET['categorie'];
+$tri = explode("-", $_GET['tri']);
 $sqlQuery3 = "SELECT * FROM Article WHERE 1 ";
 
 // On ajoute les conditions de recherche
@@ -27,7 +28,12 @@ if(!empty($categorie)){
     $sqlQuery2 .= "AND (fk_categorie = :categorie) ";
 }
 
+if(!empty($tri)){
+    $sqlQuery3 .= "ORDER BY $tri[0] $tri[1] "; ;
+}
+
 $sqlQuery3 .= " LIMIT :offset, 20";
+echo $sqlQuery3;
 
 // On prépare la requête
 $smtp1 = $mysqlClient->prepare($sqlQuery3);
@@ -49,6 +55,7 @@ $smtp1->bindValue(':offset', $_GET['onglet'] * 20, PDO::PARAM_INT);
 try{
     $smtp1->execute();
     $produits = $smtp1->fetchAll();
+
 
     $smtp2->execute();
     $nbProduits = $smtp2->fetchColumn();

@@ -10,4 +10,4 @@
         <input type="submit" name="submit" id="submit" value="submit"/>
 
 </form>
-<a href="index.php?page=liste_produits">retour</a>
+<a href="index.php">retour</a>
