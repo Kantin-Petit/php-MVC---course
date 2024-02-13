@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+    // session_start();
     if($_SESSION['user'] == 'admin')
     {
         include('admin_m.php');
