@@ -64,6 +64,10 @@ li a {
   gap: 1.5rem;
 }
 .productsListe .fiche .product-pic {
-  width: 200px;
-  height: 300px;
+  width: 300px;
+  height: 200px;
+}
+
+.photo_art {
+  width: 250px;
 }/*# sourceMappingURL=style.css.map */
