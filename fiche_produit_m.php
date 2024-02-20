@@ -8,11 +8,24 @@ try{
     if ($id_art == null || $id_art == "") {
         header("Location: index.php?page=error&message=Erreur lors de la récupération du produit");
     }else{
-        $querie = "SELECT * FROM `Article` WHERE id_art = :id_art;";
-        $res = $mysqlClient->prepare($querie);
+        //$querie = "SELECT * FROM `Article` JOIN `ass_art_tag` ON id_art = fk_art JOIN `tag` ON code_tag = fk_tag WHERE id_art = :id_art;";
+        $querie2 = "SELECT * FROM `Article` WHERE id_art = :id_art;";
+        $res = $mysqlClient->prepare($querie2);
         $res->bindParam(':id_art', $id_art);
         $res -> execute();
         $row = $res -> fetch();
+
+        $sql_z1="SELECT * FROM `interface` WHERE `zone` = 'zone1' AND template='template1';";
+        $res_z1 = $mysqlClient->prepare($sql_z1);
+        $res_z1 -> execute();
+
+        $sql_z2="SELECT * FROM `interface` WHERE `zone` = 'zone2' AND template='template1';";
+        $res_z2 = $mysqlClient->prepare($sql_z2);
+        $res_z2 -> execute();
+        
+        $sql_z3="SELECT * FROM `interface` WHERE `zone` = 'zone3' AND template='template1';";
+        $res_z3 = $mysqlClient->prepare($sql_z3);
+        $res_z3 -> execute();
     }
 }catch(PDOException $e){
     echo "Erreur lors de la récupération de l'enregistrement : " . $e->getMessage();
