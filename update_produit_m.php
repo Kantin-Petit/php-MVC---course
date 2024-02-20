@@ -2,11 +2,9 @@
 include('bd.php');
 
 try{
-    // On récupère la liste des Categories
-    $sqlQuery = "SELECT DISTINCT * FROM Categorie ORDER BY libelle_cat ASC";
-    $sth = $mysqlClient->prepare($sqlQuery);
-    $sth->execute();
-    $categories = $sth->fetchAll(PDO::FETCH_ASSOC);
+    $querie = "SELECT * FROM meta_champs where nom_formulaire = 'UpdateForm'";
+    $form = $mysqlClient->prepare($querie);
+    $form -> execute();
 
     $id_art = isset($_GET['id_art']) ? $_GET['id_art'] : null;
 
@@ -50,7 +48,7 @@ try{
                 $requete->bindParam(':description_art', $description_art);
                 $requete->bindParam(':id_art', $id_art);
         
-            // Exécution de la requête
+                // Exécution de la requête
                 $requete->execute();
         
                 header("Location: index.php?page=fiche_produit&id_art=1");
