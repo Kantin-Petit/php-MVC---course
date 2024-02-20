@@ -2,6 +2,10 @@
 
 require_once('bd.php');
 
+if(!isset($_GET['onglet']) || !isset($_GET['tri']) || !isset($_GET['search']) || !isset($_GET['categorie'])){
+    header("Location: index.php?page=liste_produits&onglet=0&tri=titre_art-ASC&search=&categorie=");
+}
+
 // On récupère la liste des Categories
 $sqlQuery = "SELECT DISTINCT * FROM Categorie ORDER BY libelle_cat ASC";
 $sth = $mysqlClient->prepare($sqlQuery);
