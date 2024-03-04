@@ -1,6 +1,11 @@
 <?php 
 include('bd.php');
 $id_art = $_GET['id_art'];
+if(isset($_GET['template'])){
+    $template = $_GET['template'];
+}else{
+    $template = "template1";
+}
 
 try{
     $id_art = isset($_GET['id_art']) ? $_GET['id_art'] : null;
@@ -15,16 +20,19 @@ try{
         $res -> execute();
         $row = $res -> fetch();
 
-        $sql_z1="SELECT * FROM `interface` WHERE `zone` = 'zone1' AND template='template1';";
+        $sql_z1="SELECT * FROM `interface` WHERE `zone` = 'zone1' AND template= :template ORDER BY ordre;";
         $res_z1 = $mysqlClient->prepare($sql_z1);
+        $res_z1->bindParam(':template', $template);
         $res_z1 -> execute();
 
-        $sql_z2="SELECT * FROM `interface` WHERE `zone` = 'zone2' AND template='template1';";
+        $sql_z2="SELECT * FROM `interface` WHERE `zone` = 'zone2' AND template= :template ORDER BY ordre;";
         $res_z2 = $mysqlClient->prepare($sql_z2);
+        $res_z2->bindParam(':template', $template);
         $res_z2 -> execute();
         
-        $sql_z3="SELECT * FROM `interface` WHERE `zone` = 'zone3' AND template='template1';";
+        $sql_z3="SELECT * FROM `interface` WHERE `zone` = 'zone3' AND template= :template ORDER BY ordre;";
         $res_z3 = $mysqlClient->prepare($sql_z3);
+        $res_z3->bindParam(':template', $template);
         $res_z3 -> execute();
     }
 }catch(PDOException $e){

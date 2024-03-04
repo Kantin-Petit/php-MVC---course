@@ -26,6 +26,7 @@
             {
         ?>
                 <a href="index.php?page=connexion">Connexion</a>
+                <a href="index.php?page=inscription">Inscription</a>
         <?php
             }
         ?>

@@ -70,4 +70,29 @@ li a {
 
 .photo_art {
   width: 250px;
+}
+
+/* page fiche produit */
+#zone1 img, #zone2 img, #zone3 img {
+  width: 250px;
+}
+
+.section {
+  width: 100%;
+  display: flex;
+}
+.section #zone1 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: aqua;
+}
+.section #zone2 {
+  width: 50%;
+  background-color: brown;
+}
+.section #zone3 {
+  background-color: green;
+  width: 50%;
+  background-color: chartreuse;
 }/*# sourceMappingURL=style.css.map */
