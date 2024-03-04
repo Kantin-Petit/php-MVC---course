@@ -20,6 +20,7 @@
         ?>
                 <a href="index.php?page=deconnexion">Déconnexion</a>
                 <a href="index.php?page=admin&onglet=0&categorie=&search=">admin page</a>
+                <a href="index.php?page=panier">panier</a>
         <?php
             }
             else
