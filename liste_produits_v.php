@@ -36,7 +36,7 @@
 			<!--<img src="IMG/<?php echo $produit['photo_art'];?>"  alt="<?php echo $produit['titre_art'];?>">-->
 			<p>DESCRIPTION : <?php echo $produit['description_art'];?></p>
 			<p>PRIX : <?php echo $produit['prix_art'];?> €</p>
-			<button>Ajouter au panier</button>
+			<form action="ajoutpanier.php?id_art=<?php echo $produit['id_art'];?>"><button type="submit" value="<?php echo $produit['id_art'];?>" id ="produit" name="produit">Ajouter au panier</button></form>
 			<a href="index.php?page=fiche_produit&id_art=<?php echo $produit['id_art'];?>">Voir la fiche</a>
 		</div>
 		<?php

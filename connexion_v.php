@@ -5,7 +5,7 @@
         </div>
         <div>
             <label for="password">password</label>
-            <input type="text" name="password" id="password" />
+            <input type="password" name="password" id="password" />
         </div>
         <input type="submit" name="submit" id="submit" value="submit"/>
 
