@@ -35,6 +35,26 @@ try{
         $res_z3->bindParam(':template', $template);
         $res_z3 -> execute();
     }
+
+    $querie = "SELECT Article.* FROM `Article`,`categorie` 
+        WHERE categorie.id_cat = :categ  AND categorie.id_cat = article.fk_categorie LIMIT 4 ,4" ;
+
+        $sqlQuery2 = "SELECT COUNT(*) FROM Article WHERE 1 ";
+        $res2 = $mysqlClient->prepare($sqlQuery2);
+        $res2 -> execute();
+        $reslimit = $res2 -> fetchColumn();
+        
+        $limit = rand(0,$reslimit -4 );
+
+        echo "ici ";
+        echo $limit;
+
+        $res = $mysqlClient->prepare($querie);
+
+        //$res->bindParam(':offset', $limit);
+        $res->bindParam(':categ', $row['fk_categorie']);
+        $res -> execute();
+        $reco = $res -> fetchAll();
 }catch(PDOException $e){
     echo "Erreur lors de la récupération de l'enregistrement : " . $e->getMessage();
 }
