@@ -1,5 +1,4 @@
 <?php 
-session_start();
 if($_SESSION['user']){
 
     $_SESSION['panier']= unserialize($_COOKIE['panier']);
@@ -24,13 +23,10 @@ if (isset($_SESSION['panier'][$produit])) {
 
 }
 
-//var_dump($_SESSION['panier']);
 header("Location:index.php?page=panier");
 }
 else {
-    
     header("Location:index.php?page=connexion");
-
 }
 
 
