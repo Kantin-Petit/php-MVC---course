@@ -1,5 +1,7 @@
-<?php 
-if($_SESSION['user']){
+<?php
+session_start(); 
+if(isset($_SESSION['user']))
+{
 
     $_SESSION['panier']= unserialize($_COOKIE['panier']);
 
