@@ -1,5 +1,4 @@
-<?php 
-    // session_start();
+<?php
     if($_SESSION['status'] == '136')
     {
         include('admin_m.php');

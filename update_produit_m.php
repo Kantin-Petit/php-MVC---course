@@ -51,7 +51,7 @@ try{
                 // Exécution de la requête
                 $requete->execute();
         
-                header("Location: index.php?page=fiche_produit&id_art=1");
+                header("Location: index.php?page=fiche_produit&id_art=".$_GET['id_art']);
             
             } catch (PDOException $e) {
                 echo "Erreur lors de la mise à jour de l'enregistrement : " . $e->getMessage();

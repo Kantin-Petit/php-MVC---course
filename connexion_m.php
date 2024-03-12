@@ -12,16 +12,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST['password'];
 
         // Requête pour vérifier les informations de connexion
-        $requete = $mysqlClient->prepare("SELECT mail_admin, mdp_admin,status_admin FROM Admin WHERE mail_admin = :login");
+        $requete = $mysqlClient->prepare("SELECT mail_client, mdp_client,statut_client FROM Client WHERE mail_client = :login");
         $requete->bindParam(':login', $login);
         $requete->execute();
         $res = $requete->fetch();
         var_dump($res);
 
-        if(password_verify($password,$res['mdp_admin'])){
+        if(password_verify($password,$res['mdp_client'])){
             //connexion ok
-            $_SESSION['user'] = $res['mail_admin'];
-            $_SESSION['status'] = $res['status_admin'];
+            $_SESSION['user'] = $res['mail_client'];
+            $_SESSION['status'] = $res['statut_client'];
             header("Location: index.php");
         }else{
             //impossible de se connecter
