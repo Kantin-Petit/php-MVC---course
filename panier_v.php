@@ -7,11 +7,6 @@
     }else{
         echo "<p>Voici votre panier M".$_SESSION['user'].":<p>";
     }
-    
-    
-     
-
-
     $i=0;
     $totals = 0;
         if (isset($_SESSION['panier']) && !empty($_SESSION['panier'])) {
