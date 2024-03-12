@@ -9,3 +9,4 @@ Une fois téléchargée, extraire le contenu de l'archive dans un répertoire su
 3. Configuration de la base de données :
 
 Importer le fichier SQL fourni avec l'archive pour créer la base de données en utilisant un outil tel que phpMyAdmin.
+La connexion a la bd ce fait avec ces information : 'mysql:host=localhost;dbname=TP1;charset=utf8', 'root', ''
