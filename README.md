@@ -1,20 +1,12 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+1. Téléchargement de l'archive :
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Télécharger l'archive depuis la source.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+2. Extraction de l'archive :
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+Une fois téléchargée, extraire le contenu de l'archive dans un répertoire sur votre serveur web. Assurez-vous que le serveur web ait les permissions nécessaires pour accéder et exécuter les fichiers extraits.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+3. Configuration de la base de données :
+
+Importer le fichier SQL fourni avec l'archive pour créer la base de données en utilisant un outil tel que phpMyAdmin.
+La connexion a la bd ce fait avec ces information : 'mysql:host=localhost;dbname=TP1;charset=utf8', 'root', ''. (bd.php)
