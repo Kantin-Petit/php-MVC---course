@@ -46,9 +46,6 @@ try{
         
         $limit = rand(0,$reslimit -4 );
 
-        echo "ici ";
-        echo $limit;
-
         $res = $mysqlClient->prepare($querie);
 
         //$res->bindParam(':offset', $limit);

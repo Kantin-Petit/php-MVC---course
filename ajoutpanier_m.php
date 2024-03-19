@@ -20,7 +20,6 @@ if (!isset($_SESSION['panier'])) {
 if (isset($_SESSION['panier'][$produit])) {
     $_SESSION['panier'][$produit] += $quantite;
 } else {
-    var_dump($produit);
     $_SESSION['panier'][$produit] = $quantite;
 
 }

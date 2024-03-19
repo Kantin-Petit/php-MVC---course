@@ -16,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $requete->bindParam(':login', $login);
         $requete->execute();
         $res = $requete->fetch();
-        var_dump($res);
 
         if(password_verify($password,$res['mdp_client'])){
             //connexion ok
