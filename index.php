@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link  type="text/css" rel="stylesheet" href="style.css">
+    <script defer type="text/javascript" src="ajax.js"></script>
 </head>
 <body>
     ***Menu***<br>

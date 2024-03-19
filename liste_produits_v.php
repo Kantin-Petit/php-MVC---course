@@ -1,25 +1,49 @@
 <div id="catalogue">
 	
 	<div class="search">
-		<form action="" method="GET">
+		<form  action="" method="GET">
 			<label for="search">Rechercher :</label>
-			<input type="text" name="search" id="search">
+			<input type="text" onfocusout="submitForm('<?php echo $_GET["tri"] ?>',value,'<?php echo $_GET["categorie"] ?>')" name="search" id="search" value="<?php echo $_GET["search"] ?>">
 			<input type="hidden" name="page" value="liste_produits">
 			<input type="hidden" name="onglet" value="0">
 			<select name="categorie" id="listeCategorie">
-				<option value="">Tous les genres</option>
+
+				<option onclick="submitForm('<?php echo $_GET["tri"] ?>','<?php echo $_GET["search"] ?>',<?php echo $_GET["categorie"] ?>)" value="">Tous les genres</option>
+				
 				<?php
 				foreach ($categories as $categorie) {
-					echo '<option value="' . $categorie['id_cat'] . '">' . $categorie['libelle_cat'] . '</option>';
+					?>
+					<option <?php if($_GET["categorie"]==$categorie["id_cat"]){ echo "selected";} ?>
+					onclick="submitForm('<?php echo $_GET["tri"] ?>','<?php echo $_GET["search"] ?>','<?php echo $categorie['id_cat']?>')" value="<?php  echo $categorie['id_cat'] ?>">
+					<?php echo $categorie['libelle_cat'] ?></option>
+				<?php
 				}
 				?>
+				
 			</select>
+			<script>
+				document.getElementById("listeCategorie").addEventListener("change", function() {
+					var categorie = this.value;
+					var search = "<?php echo $_GET['search']; ?>";
+					var  tri = "<?php echo $_GET['tri']; ?>";
+					submitForm(tri, search, categorie);
+				});
+			</script>
 			<select name="tri" id="tri">
-				<option value="prix_art-ASC">Prix croissant</option>
-				<option value="prix_art-DESC">Prix decroissant</option>
-				<option value="titre_art-ASC">Titre alphabetique</option>
-				<option value="titre_art-DESC">Titre alphabetique inverse</option>
+				<option  <?php if($_GET["tri"]=="prix_art-ASC"){ echo "selected";} ?> onclick="submitForm('prix_art-ASC','<?php echo $_GET["search"] ?>','<?php echo $_GET["categorie"] ?>')" value="prix_art-ASC">Prix croissant</option>
+				<option  <?php if($_GET["tri"]=="prix_art-DESC"){ echo "selected";} ?> onclick="submitForm('prix_art-DESC','<?php echo $_GET["search"] ?>','<?php echo $_GET["categorie"] ?>')" value="prix_art-DESC">Prix decroissant</option>
+				<option  <?php if($_GET["tri"]=="titre_art-ASC"){ echo "selected";} ?> onclick="submitForm('titre_art-ASC','<?php echo $_GET["search"] ?>','<?php echo $_GET["categorie"] ?>')" value="titre_art-ASC">Titre alphabetique</option>
+				<option  <?php if($_GET["tri"]=="titre_art-DESC"){ echo "selected";} ?> onclick="submitForm('titre_art-DESC','<?php echo $_GET["search"] ?>','<?php echo $_GET["categorie"] ?>')" value="titre_art-DESC">Titre alphabetique inverse</option>
 			</select>
+			<script>
+				document.getElementById("tri").addEventListener("change", function() {
+					var tri = this.value;
+					console.log("hello")
+					var search = "<?php echo $_GET['search']; ?>";
+					var categorie = "<?php echo $_GET['categorie']; ?>";
+					submitForm(tri, search, categorie);
+				});
+			</script>
 			<button type="submit">Rechercher</button>
 		</form>
 	</div>
