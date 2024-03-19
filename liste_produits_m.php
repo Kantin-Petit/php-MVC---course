@@ -37,7 +37,6 @@ if(!empty($tri)){
 }
 
 $sqlQuery3 .= " LIMIT :offset, 20";
-echo $sqlQuery3;
 
 // On prépare la requête
 $smtp1 = $mysqlClient->prepare($sqlQuery3);
